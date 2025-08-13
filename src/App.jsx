@@ -7,10 +7,19 @@ import 'slick-carousel/slick/slick-theme.css'
 function Header() {
   return (
     <header className="hero">
+      <div className="hero-left"></div>
+      <div className="hero-right"></div>
       <div className="hero-content">
-        <img src={SITE.logo} alt="Rust n Gold logo" className="logo" onError={(e)=>{e.target.style.display='none'}}/>
-        <h1>{SITE.name}</h1>
-        <h2 className="tagline">{SITE.tagline}</h2>
+        <img src={SITE.logo} alt="Rust n Gold logo" className="logo" />
+        <h1>
+          <span className="rust-text">Rust</span>
+          <span className="half-rust-gold">n</span>
+          <span className="gold-text">Gold</span>
+        </h1>
+        <h2>
+          <span className="rust-text">Brewed mornings.</span>
+          <span className="gold-text">Golden evenings.</span>
+        </h2>
         <p className="tagline">{SITE.address}</p>
         <a href="#menu" className="btn">See Menu</a>
       </div>
