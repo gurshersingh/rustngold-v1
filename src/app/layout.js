@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export const metadata = {
   // Primary SEO
   title: `${SITE.name} Cafe Ballarat – Best Coffee & Restaurant Experience`,
-  description: 'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. Perfect for brewed mornings and golden evenings.',
+  description: 'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. We are a family-friendly restaurant located at 202 Albert St, Sebastopol, Ballarat, VIC 3356. Perfect for brewed mornings and golden evenings.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://rustngold.com',
@@ -65,7 +65,21 @@ function jsonLd() {
       },
       "telephone": "+61-4XX-XXX-XXX",
       "servesCuisine": ["Cafe", "Breakfast", "Lunch", "Dinner"],
-      "priceRange": "$15"
+      "priceRange": "$15",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "22:00"
+        }
+      ]
     }`
   };
 }

@@ -34,7 +34,12 @@ export default function Gallery() {
       <Slider {...settings}>
         {GALLERY.map((src, i) => (
           <div key={i} className="gallery-item">
-            <img src={src} alt={`food-${i}`} />
+            <Image 
+              src={src} 
+              alt={`Delicious Food from our Ballarat Restaurant - ${i+1}`}
+              width={300} // <-- Add a width
+              height={200} // <-- Add a height  
+               />
           </div>
         ))}
       </Slider>

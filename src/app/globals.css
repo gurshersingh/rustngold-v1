@@ -1,3 +1,15 @@
+/*
+  This @font-face rule overrides the one from the third-party library
+  to apply font-display: swap, which improves performance.
+*/
+@font-face {
+  font-family: 'slick';
+  src: url('/_next/static/media/slick.653a4cbb.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* src/globals.css */
 :root {
   --accent: #b85d2a; /* rust */
@@ -40,22 +52,23 @@ body {
   flex: 1;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: left center;
+  background-position:  center;
 }
 
-/* LEFT half: show the LEFT part of the coffee image */
+/* LEFT half: show the LEFT part of the coffee image 
 .hero-left {
   background-image: url('https://images.unsplash.com/photo-1502462041640-b3d7e50d0662?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: left center;
 }
 
-/* RIGHT half: show the RIGHT part of the meat/food image */
+/* RIGHT half: show the RIGHT part of the meat/food image 
 .hero-right {
   background-image: url('https://images.unsplash.com/photo-1706650616334-97875fae8521?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: right center;
 }
-
+*/
 /* optional dark overlay across the whole hero */
+
 .hero::before {
   content: "";
   position: absolute;
