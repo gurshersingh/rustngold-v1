@@ -48,11 +48,16 @@ body {
 
 /* the two halves */
 .hero-left,
+
+
 .hero-right {
-  flex: 1;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position:  center;
+  /* These are the properties from Next.js's fill prop */
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0px;
+  object-fit: cover; 
+  object-position: center;
 }
 
 /* LEFT half: show the LEFT part of the coffee image 
