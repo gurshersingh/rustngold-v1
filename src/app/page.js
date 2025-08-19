@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import MenuSection from '@/components/MenuSection';
 import Gallery from '@/components/Gallery';
 import Enquiry from '@/components/Enquiry';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <Gallery />
         <Enquiry />
       </main>
-      <SpeedInsights />
     </div>
   );
 }

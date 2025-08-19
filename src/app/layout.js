@@ -3,6 +3,8 @@ import { SITE } from '@/data';
 import '@/app/globals.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   // Primary SEO
@@ -89,6 +91,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <SpeedInsights />
+        <Analytics />
         <footer className="site-footer">
           <div>{SITE.name} — {SITE.tagline}</div>
           <div>© {new Date().getFullYear()} {SITE.name}</div>
