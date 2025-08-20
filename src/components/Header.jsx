@@ -21,9 +21,10 @@ export default function Header() {
           <span className="gold-text">Gold</span>
         </h1>
         <h2>
-          <span className="rust-text">Brewed mornings.</span>
-          <br />
-          <span className="gold-text">Golden evenings.</span>
+          <span className="rust-text">Brewed Mornings.</span>
+          &nbsp;
+          <br className="mobile-line-break"/>
+          <span className="gold-text">Golden Evenings.</span>
         </h2>
         <p>
           <span className="tagline">Cafe & Restaurant in Ballarat</span>

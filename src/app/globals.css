@@ -127,16 +127,15 @@ h1 {
   font-weight: 700;
 }
 
-.hero h2 br {
+.mobile-line-break {
   display: none;
 }
 
-/* Use a media query to show the line break on screens up to 720px wide */
+/* Show the line break on smaller screens */
 @media (max-width: 720px) {
-  .hero h2 br {
-    display: initial; /* or display: block; */
+  .mobile-line-break {
+    display: initial; 
   }
-}
 
 
 /* color spans */
