@@ -127,6 +127,7 @@ h1 {
   font-weight: 700;
 }
 
+/* Hide the line break on larger screens */
 .mobile-line-break {
   display: none;
 }
@@ -136,7 +137,7 @@ h1 {
   .mobile-line-break {
     display: initial; 
   }
-
+}
 
 /* color spans */
 .rust-text {
