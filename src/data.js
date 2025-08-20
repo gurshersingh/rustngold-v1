@@ -1,8 +1,8 @@
 // Photo URLs are royalty-free Unsplash images. Replace with your own or local images in /public.
 export const SITE = {
   name: 'Rust n Gold',
-  tagline: 'Brewed mornings. Golden evenings.',
-  address: '202 Albert St, Sebastopol VIC 3356',
+  tagline: 'Brewed Mornings. Golden Evenings.',
+  address: '202 Albert St, Ballarat, VIC 3356',
   logo: '/logo.png'
 }
 
