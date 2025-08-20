@@ -22,6 +22,7 @@ export default function Header() {
         </h1>
         <h2>
           <span className="rust-text">Brewed mornings.</span>
+          <br />
           <span className="gold-text">Golden evenings.</span>
         </h2>
         <p>

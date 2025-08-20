@@ -127,6 +127,18 @@ h1 {
   font-weight: 700;
 }
 
+.hero h2 br {
+  display: none;
+}
+
+/* Use a media query to show the line break on screens up to 720px wide */
+@media (max-width: 720px) {
+  .hero h2 br {
+    display: initial; /* or display: block; */
+  }
+}
+
+
 /* color spans */
 .rust-text {
   color: #b85d2a;
