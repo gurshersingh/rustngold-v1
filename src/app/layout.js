@@ -12,17 +12,17 @@ export const metadata = {
   description: 'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. We are a family-friendly restaurant located at 202 Albert St, Sebastopol, Ballarat, VIC 3356. Perfect for brewed mornings and golden evenings.',
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://rustngold.com',
+    canonical: 'https://www.rustngold.com',
   },
 
   // Open Graph
   openGraph: {
     title: `${SITE.name} - Cafe & Restaurant in Ballarat`,
     description: 'Artisan coffee, fresh meals, and a cozy atmosphere in Ballarat.',
-    url: 'https://rustngold.com',
+    url: 'https://www.rustngold.com',
     type: 'website',
     images: {
-      url: 'https://rustngold.com/og-image.png',
+      url: 'https://www.rustngold.com/og-image.png',
       width: 1200,
       height: 630,
       alt: `${SITE.name} Cafe and Restaurant in Ballarat`,
