@@ -302,3 +302,49 @@ main {
     font-size: 3.2rem;
   }
 }
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* src/app/globals.css */
+
+.enquiry {
+  text-align: center;
+  padding: 2rem;
+}
+
+.enquiry-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.social-links-enquiry {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-links-enquiry a {
+  text-decoration: none;
+}
+
+.social-links-enquiry svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-links-enquiry a:hover svg {
+  transform: scale(1.1);
+}
