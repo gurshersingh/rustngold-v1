@@ -27,7 +27,7 @@ export default function Enquiry() {
                <FaInstagram size={30} style={{ color: '#E4405F' }} />
             </Link>
             <Link
-               href="https://www.tiktok.com/@your-restaurant"
+               href="https://www.tiktok.com/@rustngold?_t=ZS-8z3vJNcpXpE&_r=1"
                aria-label="Visit us on TikTok"
                target="_blank"
                rel="noopener noreferrer"
