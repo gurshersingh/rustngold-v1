@@ -30,6 +30,7 @@ export default function Header() {
           <span className="tagline">Cafe & Restaurant in Ballarat</span>
         </p>
         <p className="tagline">{SITE.address}</p>
+        <p className="tagline">{SITE.mobile}</p>
         <Link href="#menu" className="btn">Delicious Menu in Ballarat</Link>
       </div>
     </header>

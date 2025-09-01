@@ -3,7 +3,8 @@ export const SITE = {
   name: 'Rust n Gold',
   tagline: 'Brewed Mornings. Golden Evenings.',
   address: '202 Albert St, Ballarat, VIC 3356',
-  logo: '/logo.png'
+  logo: '/logo.png',
+  mobile: '0478-177-222'
 }
 
 export const GALLERY = [

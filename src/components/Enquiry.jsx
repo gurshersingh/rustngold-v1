@@ -11,7 +11,7 @@ export default function Enquiry() {
       </a>
       <div className="social-links-enquiry">
             <Link
-               href="https://www.facebook.com/profile.php?id=61579236737818"
+               href="https://www.facebook.com/profile.php?id=61579741049135"
                aria-label="Visit us on Facebook"
                target="_blank"
                rel="noopener noreferrer"

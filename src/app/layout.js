@@ -65,7 +65,7 @@ function jsonLd() {
         "latitude": -37.598549073041625,
         "longitude": 143.84092087277085
       },
-      "telephone": "+61-4XX-XXX-XXX",
+      "telephone": "+61-478-177-222",
       "servesCuisine": ["Cafe", "Breakfast", "Lunch", "Dinner"],
       "priceRange": "$15",
       "openingHoursSpecification": [
