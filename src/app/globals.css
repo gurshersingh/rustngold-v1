@@ -176,6 +176,48 @@ h1 {
   font-style: italic;
 }
 
+/* Update the main container to only handle spacing */
+.contact-details-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 2;
+  color: white;
+  font-size: 0.9rem;
+  
+  /* Use Flexbox to align the content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* New styles for the individual contact items */
+.phone-contact,
+.address-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem; /* Padding for the background box */
+  background: rgba(0, 0, 0, 0.4); /* The background box */
+  border-radius: 8px; /* Rounded corners for the background box */
+}
+
+
+/* Make it responsive for small screens */
+@media (max-width: 720px) {
+  .contact-details-bar {
+    position: relative;
+    bottom: initial;
+    left: initial;
+    right: initial;
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
 .btn {
   display: inline-block;
   margin-top: 1rem;

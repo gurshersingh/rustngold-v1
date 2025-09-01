@@ -4,7 +4,7 @@ export const SITE = {
   tagline: 'Brewed Mornings. Golden Evenings.',
   address: '202 Albert St, Ballarat, VIC 3356',
   logo: '/logo.png',
-  mobile: '0478-177-222'
+  phone: '0478 177 222'
 }
 
 export const GALLERY = [

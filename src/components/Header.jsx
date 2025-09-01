@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/data'; // Use the @ alias for absolute imports
-
+import { FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 export default function Header() {
   return (
     <header className="hero">
@@ -29,9 +29,18 @@ export default function Header() {
         <p>
           <span className="tagline">Cafe & Restaurant in Ballarat</span>
         </p>
-        <p className="tagline">{SITE.address}</p>
-        <p className="tagline">{SITE.mobile}</p>
         <Link href="#menu" className="btn">Delicious Menu in Ballarat</Link>
+      </div>
+      <div className="contact-details-bar">
+        {/* Phone on the left */}
+        <p className="phone-contact">
+          <FaPhone /> {SITE.phone}
+        </p>
+        
+        {/* Address on the right */}
+        <p className="address-contact">
+          <FaMapMarkerAlt /> {SITE.address}
+        </p>
       </div>
     </header>
   )
