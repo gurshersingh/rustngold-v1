@@ -1,47 +1,50 @@
-// my-restaurant-app/src/components/Header.jsx
+
+// src/components/Header.jsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { SITE } from '@/data'; // Use the @ alias for absolute imports
+import { SITE } from '@/data';
 import { FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 export default function Header() {
+  
   return (
-    <header className="hero">
-        <Image
-          src="/images/background.jpg"
-          alt="Delicious food at Rust n Gold"
-          className="hero-right"
-          fill
-          priority
-        />
-      <div className="hero-content">
-        <Image src={SITE.logo} alt="Rust n Gold Cafe and Restaurant Logo" className="logo" width={100} height={100} />
-        <h1>
-          <span className="rust-text">Rust</span>
-          <span className="half-rust-gold">n</span>
-          <span className="gold-text">Gold</span>
+    <header className="hero-modern">
+      <Image
+        src="/images/background.jpg"
+        alt="A modern and elegant cafe interior at Rust n Gold"
+        className="hero-background-image"
+        fill
+        priority
+      />
+      <div className="hero-overlay"></div>
+      
+      <div className="hero-content-modern">
+       <h1 className="main-heading">
+          <span className="logo-text">
+            <span>Rust</span><br className="mobile-only-break" />
+            <span className="brittany-n">n</span><br className="mobile-only-break" />
+            <span>Gold</span>
+          </span>
         </h1>
-        <h2>
-          <span className="rust-text">Brewed Mornings.</span>
-          &nbsp;
-          <br className="mobile-line-break"/>
-          <span className="gold-text">Golden Evenings.</span>
+        <h2 className="sub-heading">
+          <span className="brittany-n-tagline">Brewed Mornings.</span>
+          <br className="mobile-only-break"/>
+          <span  className="brittany-n-tagline">Golden Evenings.</span>
         </h2>
-        <p>
-          <span className="tagline">Cafe & Restaurant in Ballarat</span>
-        </p>
-        <Link href="#menu" className="btn">Delicious Menu in Ballarat</Link>
+        <Link href="#menu" className="cta-button">
+          Explore Our Menu
+        </Link>
       </div>
-      <div className="contact-details-bar">
-        {/* Phone on the left */}
-        <p className="phone-contact">
-          <FaPhone /> {SITE.phone}
-        </p>
-        
-        {/* Address on the right */}
-        <p className="address-contact">
-          <FaMapMarkerAlt /> {SITE.address}
-        </p>
-      </div>
+       <div className="contact-details-bar">
+          {/* Phone on the left */}
+          <p className="phone-contact">
+            <FaPhone /> {SITE.phone}
+          </p>
+          
+          {/* Address on the right */}
+          <p className="address-contact">
+            <FaMapMarkerAlt /> {SITE.address}
+          </p>
+        </div>
     </header>
-  )
+  );
 }

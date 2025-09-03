@@ -1,10 +1,11 @@
 // my-restaurant-app/src/app/layout.jsx
 import { SITE } from '@/data';
-import '@/app/globals.css';
+import '@/app/globals1.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Pacifico } from 'next/font/google';
 
 export const metadata = {
   // Primary SEO
@@ -41,6 +42,12 @@ export const metadata = {
     apple: '/apple-touch-icon.png', // This will use your Apple Touch Icon
   },
 };
+
+const pacifico = Pacifico({
+  subsets: ['latin'],
+  weight: ['400'], // Use the weight that you need
+  variable: '--font-bebas-neue',
+});
 
 // Schema.org Structured Data - as a separate function or component
 function jsonLd() {
@@ -88,8 +95,8 @@ function jsonLd() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={pacifico.variable}>
+      <body suppressHydrationWarning={true}> {/* Add this prop */}
         {children}
         <SpeedInsights />
         <Analytics />

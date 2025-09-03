@@ -1,0 +1,555 @@
+/*
+This @font-face rule overrides the one from the third-party library
+to apply font-display: swap, which improves performance.
+*/
+
+@font-face {
+  font-family: 'slick';
+  src: url('/_next/static/media/slick.653a4cbb.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Font Rule for 'n' */
+@font-face {
+  font-family: 'Brittany Signature'; /* Use the exact name from the font kit */
+  src: url('/fonts/BrittanySignatureRegular.woff2') format('woff2'),
+  url('/fonts/BrittanySignatureRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* For better performance */
+}
+
+/* New CSS class for the letter 'n' */
+/* src/globals.css */
+:root {
+  --accent: #b85d2a; /* rust */
+  --muted: #666;
+  --bg: #fffefb;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin: 0;
+  background: var(--bg);
+  color: #111;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 60vh;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+/* --- Modern Hero Section Styles --- */
+.hero-modern {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-background-image {
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: 1;
+}
+
+.hero-content-modern {
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+}
+
+.main-heading {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  line-height: .5;
+  text-transform: uppercase;
+}
+
+.heading-text {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #fff;
+  display: block;
+  font-weight: 300;
+}
+
+.logo-text {
+  display: block;
+  color: #d4af37;
+  font-family: var(--font-pacifico), sans-serif; /* Apply the font variable */
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 700; /* Set the font weight */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sub-heading {
+  font-size: clamp(2rem, 3vw, 1.5rem);
+  margin-top: 6rem;
+  letter-spacing: 5px;
+}
+
+.mobile-only-break {
+display: none;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 7rem;
+  background-color: #d4af37;
+  color: #000;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #b85d2a;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+/* small responsive tweaks */
+.logo {
+  max-width: 140px;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+/* Update the main container to only handle spacing */
+.contact-details-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 2;
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  /* Use Flexbox to align the content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* New styles for the individual contact items */
+.phone-contact,
+.address-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem; /* Padding for the background box */
+  background: rgba(0, 0, 0, 0.4); /* The background box */
+  border-radius: 8px; /* Rounded corners for the background box */
+}
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+.menu-section {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.menu-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+}
+.menu-item .desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.price {
+  font-weight: 600;
+  margin-left: 1rem;
+}
+.gallery {
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+.gallery-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.slick-slide {
+  padding: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+.slick-slide img {
+  border-radius: 8px;
+}
+.enquiry {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+.form label {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+.mailto {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: underline;
+}
+.site-footer {
+  background: #111;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+/* src/app/globals.css */
+.enquiry {
+  text-align: center;
+  padding: 2rem;
+}
+.enquiry-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+.social-links-enquiry {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.social-links-enquiry a {
+  text-decoration: none;
+}
+.social-links-enquiry svg {
+  transition: transform 0.2s ease-in-out;
+}
+.social-links-enquiry a:hover svg {
+  transform: scale(1.1);
+}
+
+/* --- Menu Section Styles --- */
+
+.parallax-menu-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.menu-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/menu-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+  filter: blur(2px) brightness(0.8);
+}
+
+.menu-content-scroll {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 4rem 2rem;
+  margin: 4rem auto;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.menu-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 3rem;
+}
+
+.menu-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menu-category-section h3 {
+  font-size: 1.5rem;
+  color: #d4af37;
+  margin-bottom: 1rem;
+}
+
+.menu-item-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px dashed #ddd;
+  padding: 1rem 0;
+}
+.item-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.item-price {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+/* --- Modern Menu Landing Page --- */
+.menu-links-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg);
+}
+.menu-link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.menu-link-card {
+  text-decoration: none;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 250px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.menu-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+/* --- Dynamic Menu Page --- */
+.modern-menu-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blurred-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/background.jpg'); /* Your background image */
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+.menu-content-overlay {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+.modern-menu-title {
+  font-family: var(--font-bebas-neue), sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+}
+.modern-menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+.modern-menu-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  transition: all 0.3s ease-in-out;
+}
+.modern-menu-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left-color: var(--gold-accent);
+}
+.menu-item-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.menu-item-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold-accent);
+}
+.brittany-n {
+  font-family: 'Brittany Signature', cursive; /* Use the new font family name here */
+  color: #b85d2a;
+  font-size: 1.0em; /* Adjust to look good with your other fonts */
+  line-height: 0.1;
+}
+.brittany-n-tagline {
+  font-family: 'Brittany Signature', cursive; /* Use the new font family name here */
+  color: #b85d2a;
+  font-size: 1.0em; /* Adjust to look good with your other fonts */
+  line-height: 0.1;
+}
+
+/*
+This block contains all the responsive changes
+for your header on mobile devices.
+*/
+/* --- Mobile Styles --- */
+@media (max-width: 720px) {
+  .mobile-only-break {
+    display: initial;
+  }
+  .hero-background-image {
+    object-position: 40%;
+  }
+  .sub-heading {
+    font-size: 1.8rem;
+  }
+  .hero-content-modern {
+    position: relative;
+    top: -2rem;
+    padding: 0 2rem;
+  }
+  .contact-details-bar {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .logo-text span {
+    display: block;
+    margin-bottom: 0.2em;
+  }
+  .brittany-n {
+    text-align: center;
+    font-size: 0.6em; /* Add some space above and below */
+    line-height: 0.5;
+  }
+  .brittany-n-tagline {
+    text-align: center;
+    font-size: 0.8em;/* Add some space above and below */
+    line-height: normal;
+  }
+}
