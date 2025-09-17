@@ -24,73 +24,78 @@ export const GALLERY = [
 ]
 export const MENU = [
   {
-    id: 'morning',
-    title: 'Morning Toasties & Muffins',
-    items: [
-      { name: 'Chicken Focaccia', price: '12.50', desc: 'Tender grilled chicken, a whisper of fresh herbs, and zesty aioli nestled in warm focaccia.' },
-      { name: 'Mediterranean Focaccia', price: '11.50', desc: 'A sun-kissed blend of roasted vegetables, savory feta, and fresh basil on warm, rustic bread.' },
-      { name: 'Ham, Cheese & Tomato Toastie', price: '10.00', desc: 'A timeless favorite, toasted to golden perfection with premium ham, sharp cheese, and ripe tomato.' },
-      { name: 'Egg & Bacon Muffin', price: '9.50', desc: 'Fluffy poached egg with crisp streaky bacon and melted cheese, served on a toasted muffin.' },
-      { name: 'Savory Muffin', price: '8.50', desc: 'A rustic blend of earthy spinach, tangy feta, and fresh herbs baked into a moist muffin.' },
-      { name: 'Sweet Muffin', price: '6.50', desc: 'Daily baked bliss, choose between luscious blueberry or decadent chocolate.' }
-    ]
-  },
-  {
     id: 'starters',
-    title: 'Starters & Small Plates',
+    title: 'Starters & Share Plates',
     items: [
-      { name: 'Arancini', price: '14.00', desc: 'Golden-fried risotto spheres with a melting heart of cheese, served with a fresh basil aioli.' },
-      { name: 'Bocconcini & Bruschetta', price: '12.00', desc: 'Fresh bocconcini paired with our signature tomato and basil bruschetta, drizzled with aged balsamic.' },
-      { name: 'Salt & Pepper Squid', price: '15.00', desc: 'Crisp and tender salt and pepper squid, lightly fried and served with a zesty citrus aioli.' },
-      { name: 'Bao Buns', price: '13.00', desc: 'Two perfectly steamed buns filled with either slow-cooked pork belly or spiced mushroom.' },
-      { name: 'Dips & Bread', price: '11.50', desc: 'A selection of our homemade dips, perfect for sharing with warm, charred artisan bread.' },
-      { name: 'Kofta & Yoghurt Dip', price: '14.50', desc: 'Juicy, spiced lamb kofta, served with a cooling, minty yoghurt dip.' }
-    ]
-  },
-  {
-    id: 'grill',
-    title: 'From the Grill',
-    items: [
-      { name: 'Grilled Chicken Skewers', price: '18.00', desc: 'Succulent chicken skewers, marinated and grilled to perfection.' },
-      { name: 'Spiced Minced Lamb Skewers', price: '19.00', desc: 'Flavorful, spiced lamb skewers, a robust and aromatic choice from the grill.' },
-      { name: 'Pork Fillet Skewers', price: '20.00', desc: 'Tender pork fillet skewers, lightly seasoned and grilled for a smoky flavor.' },
-      { name: 'Mixed Grill', price: '28.00', desc: 'A curated selection of our best from the grill: chicken, lamb, and pork.' },
-      { name: 'Kofte', price: '18.50', desc: 'Spiced and tender minced meat patties from the grill.' },
-      { name: 'Cuttlefish', price: '22.00', desc: 'Perfectly grilled cuttlefish, a delicate and flavorful seafood option.' }
-    ]
-  },
-  {
-    id: 'parmas',
-    title: 'Our Parmas',
-    items: [
-      { name: 'The Classic Parma', price: '20.50', desc: 'A timeless chicken parma with our signature rich tomato sauce and golden cheese crust.' },
-      { name: 'The Meat Lovers Parma', price: '22.50', desc: 'For the carnivore in you: topped with bacon, pepperoni, and a medley of our finest meats.' },
-      { name: 'The Vegetarian Parma', price: '19.00', desc: 'A hearty plant-based schnitzel topped with roasted vegetables, rich tomato, and melted mozzarella.' },
-      { name: 'Seafood Sensation Parma', price: '24.00', desc: 'A unique take on a classic, topped with prawns, calamari, and a creamy garlic sauce.' },
-      { name: 'The Hawaiian Parma', price: '21.00', desc: 'A taste of the tropics with shaved ham, sweet pineapple, and melted cheese on a golden schnitzel.' }
+      { name: 'Homemade Truffle & Mushroom Arancini', price: '14.00', desc: 'Golden-fried risotto balls with truffle and sautéed mushrooms, topped with shaved Parmesan and served with a zesty herb aioli.' },
+      { name: 'Lemon Pepper Calamari', price: '15.00', desc: 'Lightly fried calamari tossed in lemon and cracked pepper, served with a side of aioli.' },
+      { name: 'Crispy Potato Wedges', price: '10.00', desc: 'Classic potato wedges seasoned and fried to perfection, served with sour cream and sweet chili sauce.' },
+      { name: 'Haloumi Fries', price: '14.00', desc: 'Sticks of crispy, fried haloumi cheese drizzled with honey.' }
     ]
   },
   {
     id: 'mains',
     title: 'Mains',
     items: [
-      { name: 'Fish & Chips', price: '21.00', desc: 'Crispy battered fish fillets with golden, fluffy chips and our house-made tartare sauce.' },
-      { name: 'Slow Braised Lamb Shank', price: '26.00', desc: 'Fall-off-the-bone tender lamb shank, slow-cooked in a rich red wine sauce.' },
-      { name: 'Gnocchi', price: '19.50', desc: 'Light and pillowy gnocchi tossed in a creamy mushroom and truffle sauce.' },
-      { name: 'The Steak', price: '28.50', desc: 'A premium cut of steak, cooked to your liking and served with your choice of side and sauce.' },
-      { name: 'Lamb Burger', price: '18.00', desc: 'Juicy lamb patty on a toasted bun with fresh greens, tomato, and a smoky paprika sauce.' }
+      { name: 'Grilled Salmon Fillet', price: '28.00', desc: 'A succulent grilled salmon fillet served with tender asparagus and a delicate lemon dill butter sauce.' },
+      { name: 'Angus Scotch Fillet (300g)', price: '32.00', desc: 'Grilled to your liking and served with your choice of chips or creamy mash, seasonal vegetables, and your choice of sauce: mushroom, peppercorn, red wine gravy, or garlic.' },
+      { name: 'Slow-Braised Lamb Shank', price: '26.00', desc: 'Tender, slow-cooked lamb shank falling off the bone, served on a bed of creamy mash with rich gravy and seasonal vegetables.' },
+      { name: 'Roast Pork', price: '24.00', desc: 'A hearty plate of tender roast pork with crispy crackling, roasted vegetables, warm apple sauce, and rich pork gravy.' },
+      { name: 'Chicken Skewers', price: '26.00', desc: 'Two grilled chicken skewers served on warm pita bread with a fresh garden salad and our house-made white garlic sauce.' }
     ]
   },
   {
-    id: 'burgers',
-    title: 'Burgers & Wraps',
+    id: 'pasta',
+    title: 'Pasta',
     items: [
-      { name: 'Lamb Burger', price: '18.00', desc: 'A juicy, spiced lamb patty on a brioche bun with fresh rocket, tomato, and a cooling mint yoghurt.' },
-      { name: 'Chicken Burger', price: '17.00', desc: 'Crispy fried chicken fillet with creamy slaw, pickled onion, and zesty aioli on a toasted brioche bun.' },
-      { name: 'Steak Sandwich', price: '19.00', desc: 'Thinly sliced, grilled steak with caramelized onions, melted cheese, and fresh greens on toasted sourdough.' },
-      { name: 'Lamb Wrap', price: '16.50', desc: 'Tender spiced lamb with fresh salad and a garlic sauce, wrapped in a warm flatbread.' },
-      { name: 'Chicken Wrap', price: '15.50', desc: 'Grilled chicken strips with crisp lettuce, tomato, and a creamy dressing, all wrapped up for a quick bite.' },
-      { name: 'Beef Burger', price: '18.50', desc: 'A classic beef patty, cooked to perfection and served with all the fixings on a toasted brioche bun.' }
+      { name: 'Spaghetti Bolognese', price: '23.00', desc: 'A classic rich beef and tomato ragu tossed with spaghetti and finished with fresh Parmesan.' },
+      { name: 'Fettuccine Carbonara', price: '25.00', desc: 'Traditional creamy carbonara with smoky bacon, sautéed mushrooms, and fresh herbs.' },
+      { name: 'Creamy Pesto Spaghetti', price: '22.00', desc: 'Spaghetti tossed in a rich and creamy basil pesto sauce, finished with fresh herbs and Parmesan.' }
+    ]
+  },
+  {
+    id: 'parmas',
+    title: 'Famous Chicken Parmas',
+    description: 'All our chicken is freshly crumbed in-house daily and topped with our signature house-made Napoli sauce.',
+    items: [
+      { name: 'The Classic Parma', price: '22.00', desc: 'Our signature parma topped with premium ham, melted mozzarella, and fresh Parmesan. Served with chips & salad.' },
+      { name: 'Hawaiian Parma', price: '24.00', desc: 'Topped with leg ham, melted mozzarella, and sweet pineapple. Served with chips & salad.' },
+      { name: 'Meat Lovers Parma', price: '26.00', desc: 'Loaded with smoky bacon, spicy salami, and ham, all topped with melted mozzarella and a drizzle of barbecue sauce. Served with chips & salad.' },
+      { name: 'Seafood Sensation Parma', price: '26.00', desc: 'Topped with fresh prawns, melted mozzarella, and a creamy garlic sauce. Served with chips & salad.' },
+      { name: 'Vegetarian Parma', price: '26.00', desc: 'Crumbed eggplant topped with fresh tomatoes, red onions, crumbled feta, and melted mozzarella. Served with chips & salad.' }
+    ]
+  },
+  {
+    id: 'burgers_sandwiches',
+    title: 'Burgers, Wraps & Sandwiches',
+    description: 'All burgers and sandwiches are served with a side of crispy chips.',
+    items: [
+      { name: 'House Beef Burger', price: '22.00', desc: 'A juicy house-made beef patty, melted cheddar, crispy bacon, fresh lettuce, tomato, and pickle, finished with our signature house sauce.' },
+      { name: 'Southern Fried Chicken Burger', price: '24.00', desc: 'A crispy southern fried chicken fillet with creamy slaw, melted cheese, and garlic aioli.' },
+      { name: 'Steak Sandwich', price: '24.00', desc: 'Tender grilled steak with caramelized onion, melted cheese, crispy bacon, and a savory relish.' },
+      { name: 'The Reuben', price: '20.00', desc: 'Thinly sliced pastrami with Swiss cheese, tangy sauerkraut, and Russian dressing on toasted rye bread.' },
+      { name: 'Spicy Prosciutto Sandwich', price: '20.00', desc: 'Prosciutto and fresh mozzarella with a zesty kick of red pepper chili jam and rocket on toasted sourdough.' },
+      { name: 'Grilled Chicken Wrap', price: '22.00', desc: 'Marinated grilled chicken with fresh salad and garlic aioli, wrapped in a warm tortilla.' },
+      { name: 'Vegetarian Haloumi Wrap', price: '18.00', desc: 'Grilled haloumi, fresh tomatoes, onion, and mixed greens with our creamy garlic sauce, wrapped in a warm tortilla.' }
+    ]
+  },
+  {
+    id: 'kids_menu',
+    title: 'Kids Menu',
+    items: [
+      { name: 'Chicken Nuggets & Chips', price: '10.00', desc: null },
+      { name: 'Fish Bites & Chips', price: '12.00', desc: null },
+      { name: 'Kids Spaghetti Bolognese', price: '12.00', desc: null }
+    ]
+  },
+  {
+    id: 'sides',
+    title: 'Sides',
+    items: [
+      { name: 'Chips', price: '8.00', desc: null },
+      { name: 'Creamy Mash', price: '8.00', desc: null },
+      { name: 'Garden Salad', price: '8.00', desc: null },
+      { name: 'Steamed Vegetables', price: '8.00', desc: null }
     ]
   }
 ];
