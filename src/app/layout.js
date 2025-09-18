@@ -119,7 +119,14 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {/* --- End Google Tag Integration --- */}
-
+        {/* --- New Phone Call Tracking Snippet --- */}
+        <Script id="phone-call-tracking">
+          {`
+            gtag('config', 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB', {
+              'phone_conversion_number': '0478 177 222'
+            });
+          `}
+        </Script>
         <footer className="site-footer">
           <div>{SITE.name} — {SITE.tagline}</div>
           <div>© {new Date().getFullYear()} {SITE.name}</div>

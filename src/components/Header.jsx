@@ -1,4 +1,4 @@
-
+'use client';
 // src/components/Header.jsx
 import Link from 'next/link';
 import Image from 'next/image';
@@ -35,12 +35,14 @@ export default function Header() {
         </Link>
       </div>
        <div className="contact-details-bar">
-          {/* Phone on the left */}
-          <p className="phone-contact">
-            <FaPhone /> {SITE.phone}
-          </p>
+          <a
+            href="tel:+61478177222"
+            className="phone-contact"
+            onClick={() => gtag('event', 'conversion', { 'send_to': 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB' })}
+  >
+            <FaPhone /> 0478 177 222
+          </a>
           
-          {/* Address on the right */}
           <p className="address-contact">
             <FaMapMarkerAlt /> {SITE.address}
           </p>

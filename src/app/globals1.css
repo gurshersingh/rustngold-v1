@@ -163,22 +163,41 @@ h1 {
   font-style: italic;
 }
 /* Update the main container to only handle spacing */
+/* src/app/globals.css */
+
+/* --- Corrected Contact Bar Styles --- */
 .contact-details-bar {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
   z-index: 2;
-  color: white;
+  color: white; /* Applies to all text inside the bar */
   font-size: 0.9rem;
   margin-bottom: 2rem;
-  /* Use Flexbox to align the content */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-/* New styles for the individual contact items */
-.phone-contact,
+
+/* Explicitly style the phone link to make sure it's white */
+.phone-contact {
+  color: white;
+  text-decoration: none;
+}
+
+.phone-contact:hover {
+  color: #d4af37;
+}
+
+/* --- Responsive styles for the Contact Bar --- */
+@media (max-width: 720px) {
+  .contact-details-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
 .address-contact {
   display: flex;
   align-items: center;
@@ -529,15 +548,19 @@ for your header on mobile devices.
     top: -2rem;
     padding: 0 2rem;
   }
-  .contact-details-bar {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
+ 
+/* This targets the <a> tag with the specific class */
+.phone-contact {
+  color: white; /* This will force the text and icon to be white */
+  text-decoration: none;
+}
+
+/* Add a hover effect for a better user experience */
+.phone-contact:hover {
+  color: #d4af37;
+}
+
+
   .logo-text span {
     display: block;
     margin-bottom: 0.2em;
