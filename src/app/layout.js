@@ -1,10 +1,11 @@
 // my-restaurant-app/src/app/layout.jsx
 import { SITE } from '@/data';
-import '@/app/globals1.css';
+import '@/app/globals.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script'; // Import the Script component
 import { Pacifico } from 'next/font/google';
 
 export const metadata = {
@@ -96,10 +97,30 @@ function jsonLd() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={pacifico.variable}>
-      <body suppressHydrationWarning={true}> {/* Add this prop */}
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
+      </head>
+      <body suppressHydrationWarning={true}>
         {children}
         <SpeedInsights />
         <Analytics />
+
+        {/* --- Google Tag Integration --- */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17459624697"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17459624697');
+          `}
+        </Script>
+        {/* --- End Google Tag Integration --- */}
+
         <footer className="site-footer">
           <div>{SITE.name} — {SITE.tagline}</div>
           <div>© {new Date().getFullYear()} {SITE.name}</div>
