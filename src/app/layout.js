@@ -1,13 +1,12 @@
 // my-restaurant-app/src/app/layout.jsx
 import { SITE } from '@/data';
-import '@/app/globals.css';
+import '@/app/globals1.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script'; // Import the Script component
 import { Pacifico } from 'next/font/google';
-
 export const metadata = {
   // Primary SEO
   title: `${SITE.name} Cafe Ballarat – Best Coffee & Restaurant Experience`,
@@ -97,20 +96,10 @@ function jsonLd() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={pacifico.variable}>
-      <body>
-      {/* --- Google Tag Integration (for Testing) --- */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17459624697"
-        />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17459624697');
-          `}
-        </Script>
-        {/* --- End Google Tag Integration --- */}
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
+      </head>
+      <body suppressHydrationWarning={true}>
         {children}
         <SpeedInsights />
         <Analytics />
