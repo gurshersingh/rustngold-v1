@@ -97,10 +97,20 @@ function jsonLd() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={pacifico.variable}>
-      <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
-      </head>
-      <body suppressHydrationWarning={true}>
+      <body>
+      {/* --- Google Tag Integration (for Testing) --- */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17459624697"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17459624697');
+          `}
+        </Script>
+        {/* --- End Google Tag Integration --- */}
         {children}
         <SpeedInsights />
         <Analytics />
