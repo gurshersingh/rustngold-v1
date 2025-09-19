@@ -576,3 +576,72 @@ for your header on mobile devices.
     line-height: normal;
   }
 }
+
+/* src/app/globals.css */
+
+/* Add this new code at the end of the file */
+.fixed-cta-button,
+.fixed-call-button {
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--accent);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  animation: pulse 2s infinite;
+}
+
+.fixed-cta-button:hover,
+.fixed-call-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Position the Order Online button in the top-right */
+.fixed-cta-button {
+  top: 2rem;
+  right: 2rem;
+}
+
+/* Position the Call Now button in the top-left */
+.fixed-call-button {
+  top: 2rem;
+  left: 2rem;
+}
+
+/* The Keyframes for the pulsing animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* On mobile, make the buttons a little smaller */
+@media (max-width: 720px) {
+  .fixed-cta-button,
+  .fixed-call-button {
+    top: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .fixed-cta-button {
+    right: 1rem;
+  }
+
+  .fixed-call-button {
+    left: 1rem;
+  }
+}

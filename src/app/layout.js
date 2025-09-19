@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script'; // Import the Script component
 import { Pacifico } from 'next/font/google';
+import Link from 'next/link';
+
 export const metadata = {
   // Primary SEO
   title: `${SITE.name} Cafe Ballarat – Best Coffee & Restaurant Experience`,
@@ -135,6 +137,21 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLd()}
         />
+
+         {/* --- Fixed Call & Order Buttons --- */}
+        <Link href="tel:+61478177222" className="fixed-call-button">
+          Call Now
+        </Link>
+
+        <Link
+          href="https://rust-n-gold.nextorder.com/"
+          className="fixed-cta-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Order Online
+        </Link>
+        {/* --- End Fixed Call & Order Buttons --- */}
       </body>
     </html>
   );
