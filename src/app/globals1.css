@@ -777,6 +777,7 @@ for your header on mobile devices.
      top: .5rem;
     padding: .5rem;
     left: 29%;
+    transform: translateX(-50%);
   }
   
   .promo-text { font-size: 1rem; }
