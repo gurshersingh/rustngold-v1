@@ -728,14 +728,6 @@ for your header on mobile devices.
   margin: 0;
 }
 
-.promo-disclaimer {
-  font-size: clamp(0.7rem, 1.5vw, .7rem);
-  color: #000;
-  font-weight:normal;
-  font-style: italic;
-  margin: 0;
-  padding-top: 0.2rem;
-}
 
 .promo-date {
   font-size: clamp(0.7rem, 1.5vw, .7rem);
@@ -785,7 +777,6 @@ for your header on mobile devices.
   .promo-text { font-size: 1rem; }
   .promo-subtext { font-size: 0.7rem; }
   .promo-date { font-size: 0.5rem;  }
-  .promo-disclaimer {font-size: 0.5rem; }
-  .promo-click-here {font-size: 0.3rem; }
+  .promo-click-here {font-size: 0.4rem; }
 
 }

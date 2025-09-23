@@ -149,7 +149,6 @@ export default function RootLayout({ children }) {
           <span className="promo-click-here">Click Here to Redeem</span>
           <p className="promo-text">KIDS EAT FREE!</p>
           <p className="promo-subtext">School Holidays Special</p>
-          <span className="promo-disclaimer">Call & Dine-in Orders Only</span>
           <span className="promo-date">until 5th Oct</span>
         </Link>
 
