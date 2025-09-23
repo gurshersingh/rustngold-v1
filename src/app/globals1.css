@@ -755,27 +755,34 @@ for your header on mobile devices.
 @media (max-width: 720px) {
   .fixed-button {
     padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.1rem;
   }
   
   .fixed-call-button,
   .fixed-cta-button {
-    top: 1.5rem;
+    top: .5rem;
   }
   
   .fixed-call-button {
-    left: 1rem;
+    left: .5rem;
+    font-size: .7rem;
   }
   
   .fixed-cta-button {
-    right: 1rem;
+    right: .2rem;
+    font-size: .7rem;
   }
   
   .fixed-promo-button {
-    padding: 1rem;
+     top: .5rem;
+    padding: .5rem;
+    left: 29%;
   }
   
-  .promo-text { font-size: 1.5rem; }
-  .promo-subtext { font-size: 0.9rem; }
-  .promo-date { display: none; }
+  .promo-text { font-size: 1rem; }
+  .promo-subtext { font-size: 0.7rem; }
+  .promo-date { font-size: 0.5rem;  }
+  .promo-disclaimer {font-size: 0.5rem; }
+  .promo-click-here {font-size: 0.3rem; }
+
 }
