@@ -146,6 +146,7 @@ export default function RootLayout({ children }) {
         <Link 
           href="tel:+61478177222"
           className="fixed-button fixed-promo-button">
+          <span className="promo-click-here">Click Here to Redeem</span>
           <p className="promo-text">KIDS EAT FREE!</p>
           <p className="promo-subtext">School Holidays Special</p>
           <span className="promo-disclaimer">Call & Dine-in Orders Only</span>

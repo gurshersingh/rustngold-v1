@@ -703,6 +703,15 @@ for your header on mobile devices.
   transform: translate(-50%, -50%) scale(1.05);
 }
 
+.promo-click-here {
+  font-size: clamp(0.5rem, 1.5vw, .5rem);
+  color: #000;
+  font-weight:normal;
+  font-style: italic;
+  margin: 0;
+  padding-top: 0.2rem;
+}
+
 .promo-text {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-family: var(--font-pacifico);
@@ -727,6 +736,7 @@ for your header on mobile devices.
   margin: 0;
   padding-top: 0.2rem;
 }
+
 .promo-date {
   font-size: clamp(0.7rem, 1.5vw, .7rem);
   color: #000;
