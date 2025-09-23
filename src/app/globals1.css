@@ -645,3 +645,127 @@ for your header on mobile devices.
     left: 1rem;
   }
 }
+/* src/app/globals.css */
+
+/* --- All Fixed Buttons (Consolidated) --- */
+.fixed-button {
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  animation: pulse 2s infinite;
+  border-radius: 50px;
+}
+
+.fixed-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.fixed-call-button,
+.fixed-cta-button {
+  padding: 1rem 1.5rem;
+  top: 2rem;
+}
+
+.fixed-call-button {
+  left: 2rem;
+}
+
+.fixed-cta-button {
+  right: 2rem;
+}
+
+.fixed-promo-button {
+  top: 2%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  padding: .7rem .7rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.fixed-call-button:hover,
+.fixed-cta-button:hover {
+  transform: translateY(-5px);
+}
+
+.fixed-promo-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.promo-text {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-family: var(--font-pacifico);
+  font-weight: 700;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.promo-subtext {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.promo-disclaimer {
+  font-size: clamp(0.7rem, 1.5vw, .7rem);
+  color: #000;
+  font-weight:normal;
+  font-style: italic;
+  margin: 0;
+  padding-top: 0.2rem;
+}
+.promo-date {
+  font-size: clamp(0.7rem, 1.5vw, .7rem);
+  color: #000;
+  font-weight: normal;
+  font-style: italic;
+  margin: 0;
+  padding-top: 0.2rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 720px) {
+  .fixed-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .fixed-call-button,
+  .fixed-cta-button {
+    top: 1.5rem;
+  }
+  
+  .fixed-call-button {
+    left: 1rem;
+  }
+  
+  .fixed-cta-button {
+    right: 1rem;
+  }
+  
+  .fixed-promo-button {
+    padding: 1rem;
+  }
+  
+  .promo-text { font-size: 1.5rem; }
+  .promo-subtext { font-size: 0.9rem; }
+  .promo-date { display: none; }
+}
