@@ -144,9 +144,9 @@ export default function RootLayout({ children }) {
         </Link>
 
         <Link 
-          href="tel:+61478177222"
+          href="https://rust-n-gold.nextorder.com/"
           className="fixed-button fixed-promo-button">
-          <span className="promo-click-here">Click Here to Redeem</span>
+          <span className="promo-click-here">Dine-in Only</span>
           <p className="promo-text">KIDS EAT FREE!</p>
           <p className="promo-subtext">School Holidays Special</p>
           <span className="promo-date">until 5th Oct</span>
