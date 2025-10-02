@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 // NOTE: You must update the 'send_to' ID and 'value' here
-const CLICK_TO_CALL_SNIPPET = 'AW-17459624697/zAjWCKb10aUbEPn1soVB';
+const CLICK_TO_CALL_SNIPPET = 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB';
 const CONVERSION_VALUE = 0.20; // AUD value you want to assign
 
 // The function to report the conversion
