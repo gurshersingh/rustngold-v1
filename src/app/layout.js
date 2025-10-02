@@ -10,6 +10,7 @@ import { Pacifico } from 'next/font/google';
 import Link from 'next/link';
 
 export const metadata = {
+  // ... (metadata remains the same)
   // Primary SEO
   title: `${SITE.name} Cafe Ballarat – Best Coffee & Restaurant Experience`,
   description: 'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. We are a family-friendly restaurant located at 202 Albert St, Sebastopol, Ballarat, VIC 3356. Perfect for brewed mornings and golden evenings.',
@@ -95,7 +96,33 @@ function jsonLd() {
   };
 }
 
+// Extract the conversion ID and phone number for clarity
+const CONVERSION_ID = 'AW-17459624697';
+const CLICK_TO_CALL_SNIPPET = 'AW-17459624697/zAjWCKb10aUbEPn1soVB';
+
 export default function RootLayout({ children }) {
+  // Function to handle the call link click and report conversion
+  const gtagReportConversion = (url) => {
+    var callback = function () {
+      if (typeof url !== 'undefined') {
+        window.location = url;
+      }
+    };
+    // The gtag function is available globally after the G-Tag script loads
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17459624697/zAjWCKb10aUbEPn1soVB',
+        'value': 0.20, 
+        'currency': 'AUD', 
+        'event_callback': callback
+      });
+    } else {
+      // Fallback: simply navigate if gtag isn't ready
+      window.location = url;
+    }
+    return false;
+  };
+
   return (
     <html lang="en" className={pacifico.variable}>
       <head>
@@ -106,10 +133,10 @@ export default function RootLayout({ children }) {
         <SpeedInsights />
         <Analytics />
 
-        {/* --- Google Tag Integration --- */}
+        {/* --- Google Ads Global Tag (GA is already included in your code) --- */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17459624697"
+          src={`https://www.googletagmanager.com/gtag/js?id=${CONVERSION_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -117,18 +144,20 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17459624697');
+            gtag('config', '${CONVERSION_ID}');
           `}
         </Script>
         {/* --- End Google Tag Integration --- */}
-        {/* --- New Phone Call Tracking Snippet --- */}
-        <Script id="phone-call-tracking">
+
+        {/* --- OPTIONAL: Phone Number Snippet (If using Call-Only Ads) --- */}
+        {/* <Script id="phone-call-tracking">
           {`
             gtag('config', 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB', {
               'phone_conversion_number': '0478 177 222'
             });
           `}
-        </Script>
+        </Script> */}
+
         <footer className="site-footer">
           <div>{SITE.name} — {SITE.tagline}</div>
           <div>© {new Date().getFullYear()} {SITE.name}</div>
@@ -139,7 +168,15 @@ export default function RootLayout({ children }) {
         />
 
          {/* --- Fixed Call & Order Buttons --- */}
-        <Link href="tel:+61478177222" className="fixed-call-button">
+        <Link 
+          href="tel:+61478177222" 
+          className="fixed-call-button"
+          // **APPLY THE CONVERSION TRACKING HERE**
+          onClick={(e) => {
+            e.preventDefault(); // Prevent default link behavior
+            gtagReportConversion('tel:+61478177222');
+          }}
+        >
           Call Now
         </Link>
 
@@ -157,6 +194,8 @@ export default function RootLayout({ children }) {
           className="fixed-cta-button"
           target="_blank"
           rel="noopener noreferrer"
+          // **YOU SHOULD ADD A SIMILAR onClick FOR THE ORDER BUTTON**
+          // For example: onClick={(e) => { e.preventDefault(); gtagReportConversionForOrder('https://rust-n-gold.nextorder.com/'); }}
         >
           Order Online
         </Link>
@@ -165,3 +204,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
