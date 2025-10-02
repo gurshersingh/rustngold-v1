@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script'; // Import the Script component
 import { Pacifico } from 'next/font/google';
 import Link from 'next/link';
+import { TrackedCallLink } from '../components/TrackedCallLink';
 
 export const metadata = {
   // ... (metadata remains the same)
@@ -98,110 +99,73 @@ function jsonLd() {
 
 // Extract the conversion ID and phone number for clarity
 const CONVERSION_ID = 'AW-17459624697';
-const CLICK_TO_CALL_SNIPPET = 'AW-17459624697/zAjWCKb10aUbEPn1soVB';
 
 export default function RootLayout({ children }) {
   // Function to handle the call link click and report conversion
-  const gtagReportConversion = (url) => {
-    var callback = function () {
-      if (typeof url !== 'undefined') {
-        window.location = url;
-      }
-    };
-    // The gtag function is available globally after the G-Tag script loads
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17459624697/zAjWCKb10aUbEPn1soVB',
-        'value': 0.20, 
-        'currency': 'AUD', 
-        'event_callback': callback
-      });
-    } else {
-      // Fallback: simply navigate if gtag isn't ready
-      window.location = url;
-    }
-    return false;
-  };
-
+  
   return (
-    <html lang="en" className={pacifico.variable}>
-      <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
-      </head>
-      <body suppressHydrationWarning={true}>
-        {children}
-        <SpeedInsights />
-        <Analytics />
+        <html lang="en" className={pacifico.variable}>
+            <head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
+            </head>
+            <body suppressHydrationWarning={true}>
+                {children}
+                <SpeedInsights />
+                <Analytics />
 
-        {/* --- Google Ads Global Tag (GA is already included in your code) --- */}
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${CONVERSION_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${CONVERSION_ID}');
-          `}
-        </Script>
-        {/* --- End Google Tag Integration --- */}
+                {/* --- Google Ads Global Tag (Keep this!) --- */}
+                <Script
+                    async
+                    src={`https://www.googletagmanager.com/gtag/js?id=${CONVERSION_ID}`}
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${CONVERSION_ID}');
+                    `}
+                </Script>
+                {/* --- End Google Tag Integration --- */}
 
-        {/* --- OPTIONAL: Phone Number Snippet (If using Call-Only Ads) --- */}
-        {/* <Script id="phone-call-tracking">
-          {`
-            gtag('config', 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB', {
-              'phone_conversion_number': '0478 177 222'
-            });
-          `}
-        </Script> */}
+                <footer className="site-footer">
+                    {/* ... footer content ... */}
+                </footer>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={jsonLd()}
+                />
 
-        <footer className="site-footer">
-          <div>{SITE.name} — {SITE.tagline}</div>
-          <div>© {new Date().getFullYear()} {SITE.name}</div>
-        </footer>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={jsonLd()}
-        />
+                {/* --- Fixed Call & Order Buttons --- */}
+                {/* USE THE NEW TRACKED COMPONENT HERE */}
+                <TrackedCallLink 
+                    href="tel:+61478177222" 
+                    className="fixed-call-button"
+                >
+                    Call Now
+                </TrackedCallLink>
 
-         {/* --- Fixed Call & Order Buttons --- */}
-        <Link 
-          href="tel:+61478177222" 
-          className="fixed-call-button"
-          // **APPLY THE CONVERSION TRACKING HERE**
-          onClick={(e) => {
-            e.preventDefault(); // Prevent default link behavior
-            gtagReportConversion('tel:+61478177222');
-          }}
-        >
-          Call Now
-        </Link>
+                {/* The other buttons remain the same (for now) */}
+                <Link 
+                    href="https://rust-n-gold.nextorder.com/"
+                    className="fixed-button fixed-promo-button">
+                    <span className="promo-click-here">Dine-in Only</span>
+                    <p className="promo-text">KIDS EAT FREE!</p>
+                    <p className="promo-subtext">School Holidays Special</p>
+                    <span className="promo-date">until 5th Oct</span>
+                </Link>
 
-        <Link 
-          href="https://rust-n-gold.nextorder.com/"
-          className="fixed-button fixed-promo-button">
-          <span className="promo-click-here">Dine-in Only</span>
-          <p className="promo-text">KIDS EAT FREE!</p>
-          <p className="promo-subtext">School Holidays Special</p>
-          <span className="promo-date">until 5th Oct</span>
-        </Link>
-
-        <Link
-          href="https://rust-n-gold.nextorder.com/"
-          className="fixed-cta-button"
-          target="_blank"
-          rel="noopener noreferrer"
-          // **YOU SHOULD ADD A SIMILAR onClick FOR THE ORDER BUTTON**
-          // For example: onClick={(e) => { e.preventDefault(); gtagReportConversionForOrder('https://rust-n-gold.nextorder.com/'); }}
-        >
-          Order Online
-        </Link>
-        {/* --- End Fixed Call & Order Buttons --- */}
-      </body>
-    </html>
-  );
+                <Link
+                    href="https://rust-n-gold.nextorder.com/"
+                    className="fixed-cta-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Order Online
+                </Link>
+                {/* --- End Fixed Call & Order Buttons --- */}
+            </body>
+        </html>
+    );
 }
-
