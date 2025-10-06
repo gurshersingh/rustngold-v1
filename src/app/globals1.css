@@ -555,7 +555,7 @@ for your header on mobile devices.
   }
   .cta-button{
     position: relative;
-    top: -3rem;
+    top: -5rem;
   }
  
 /* This targets the <a> tag with the specific class */
@@ -779,7 +779,7 @@ for your header on mobile devices.
   .fixed-promo-button {
      top: .5rem;
     padding: .2rem;
-    left: 38%;
+    left: 36%;
     transform: translateX(-50%);
   }
   
