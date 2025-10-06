@@ -548,6 +548,15 @@ for your header on mobile devices.
     top: 1rem;
     padding: 0 2rem;
   }
+  .sub-heading{
+    position: relative;
+    top: -3rem;
+    padding: 0 2rem;
+  }
+  .cta-button{
+    position: relative;
+    top: -3rem;
+  }
  
 /* This targets the <a> tag with the specific class */
 .phone-contact {
@@ -770,7 +779,7 @@ for your header on mobile devices.
   .fixed-promo-button {
      top: .5rem;
     padding: .2rem;
-    left: 45%;
+    left: 38%;
     transform: translateX(-50%);
   }
   
