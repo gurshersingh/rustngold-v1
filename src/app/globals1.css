@@ -683,7 +683,7 @@ for your header on mobile devices.
 
 .fixed-promo-button {
   top: 2%;
-  left: 40%;
+  left: 45%;
   transform: translate(-50%, -50%);
   padding: .7rem .7rem;
   text-align: center;
@@ -716,7 +716,7 @@ for your header on mobile devices.
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-family: var(--font-pacifico);
   font-weight: 700;
-  color: black;
+  color: white;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
   margin: 0;
 }
@@ -770,7 +770,7 @@ for your header on mobile devices.
   .fixed-promo-button {
      top: .5rem;
     padding: .2rem;
-    left: 22.5%;
+    left: 33%;
     transform: translateX(-50%);
   }
   

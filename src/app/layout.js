@@ -150,9 +150,9 @@ export default function RootLayout({ children }) {
                 <Link 
                     href="https://rust-n-gold.nextorder.com/"
                     className="fixed-button fixed-promo-button">
-                    <span className="promo-click-here">Online Order Only</span>
+                    <span className="promo-click-here">Use Promo: 10OFF</span>
                     <p className="promo-text">10% Off!</p>
-                    <span className="promo-date">until 31st Oct</span>
+                    <span className="promo-date">Online Order Only</span>
                 </Link>
 
                 <Link
