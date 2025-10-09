@@ -692,7 +692,7 @@ for your header on mobile devices.
 
 .fixed-promo-button {
   top: 2%;
-  left: 45%;
+  left: 40%;
   transform: translate(-50%, -50%);
   padding: .7rem .7rem;
   text-align: center;
@@ -779,7 +779,7 @@ for your header on mobile devices.
   .fixed-promo-button {
      top: .5rem;
     padding: .2rem;
-    left: 36%;
+    left: 26%;
     transform: translateX(-50%);
   }
   

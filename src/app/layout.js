@@ -148,15 +148,15 @@ export default function RootLayout({ children }) {
 
                 {/* The other buttons remain the same (for now) */}
                 <Link 
-                    href="https://rust-n-gold.nextorder.com/"
+                    href="https://order.online/business/rust-n-gold-14902965"
                     className="fixed-button fixed-promo-button">
-                    <span className="promo-click-here">Promo 10OFF</span>
-                    <p className="promo-text">10% Off!</p>
+                    <span className="promo-click-here">Click here</span>
+                    <p className="promo-text">FREE DELIVERY!</p>
                     <span className="promo-date">Online Only</span>
                 </Link>
 
                 <Link
-                    href="https://rust-n-gold.nextorder.com/"
+                    href="https://order.online/business/rust-n-gold-14902965"
                     className="fixed-cta-button"
                     target="_blank"
                     rel="noopener noreferrer"
