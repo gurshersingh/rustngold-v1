@@ -152,7 +152,7 @@ export default function RootLayout({ children }) {
                     className="fixed-button fixed-promo-button">
                     <span className="promo-click-here">Click here</span>
                     <p className="promo-text">FREE DELIVERY!</p>
-                    <span className="promo-date">Online Only</span>
+                    <span className="promo-date">min order $35</span>
                 </Link>
 
                 <Link
