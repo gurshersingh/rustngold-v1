@@ -7,19 +7,22 @@ export default function PromoModal() {
 
   useEffect(() => {
     // ✅ Listen for open event from floating button
-    const handleOpenPromo = () => setVisible(true);
-    window.addEventListener('openPromo', handleOpenPromo);
+    // const handleOpenPromo = () => setVisible(true);
+    // window.addEventListener('openPromo', handleOpenPromo);
 
-    // Optional: auto-show modal once per visit
-    if (!sessionStorage.getItem('promoShown')) {
-      setTimeout(() => {
-        setVisible(true);
-        sessionStorage.setItem('promoShown', 'true');
-      }, 1500);
-    }
+    // // Optional: auto-show modal once per visit
+    // if (!sessionStorage.getItem('promoShown')) {
+    //   setTimeout(() => {
+    //     setVisible(true);
+    //     sessionStorage.setItem('promoShown', 'true');
+    //   }, 1500);
+    // }
+     // ✅ Listen for toggle event
+    const handleTogglePromo = () => setVisible(prev => !prev);
+    window.addEventListener('togglePromo', handleTogglePromo);
 
     return () => {
-      window.removeEventListener('openPromo', handleOpenPromo);
+      window.removeEventListener('togglePromo', handleTogglePromo);
     };
   }, []);
 

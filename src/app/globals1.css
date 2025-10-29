@@ -668,7 +668,7 @@ for your header on mobile devices.
   letter-spacing: 1px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
-  animation: pulse 2s infinite;
+  animation: pulseCentered 2s infinite;
   border-radius: 50px;
 }
 
@@ -691,16 +691,22 @@ for your header on mobile devices.
 }
 
 .fixed-promo-button {
+  position: fixed;
   top: 2%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  padding: .7rem .7rem;
+  left: 50%; /* start from horizontal center of viewport */
+  transform: translateX(-50%); /* ✅ only move left half of its own width */
+  padding: 0.7rem 0.7rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.2;
+  z-index: 1000;
+}
+
+.fixed-promo-button:hover {
+  transform: translateX(-50%) scale(1.05); /* keep centered while scaling */
 }
 
 .fixed-call-button:hover,
@@ -708,9 +714,7 @@ for your header on mobile devices.
   transform: translateY(-5px);
 }
 
-.fixed-promo-button:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-}
+
 
 .promo-click-here {
   font-size: clamp(0.5rem, 1.5vw, .5rem);
@@ -747,10 +751,16 @@ for your header on mobile devices.
   padding-top: 0.2rem;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+@keyframes pulseCentered {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
 }
 .fade-in {
   opacity: 0;
@@ -785,15 +795,14 @@ for your header on mobile devices.
   }
   
   .fixed-promo-button {
-     top: .5rem;
-    padding: .2rem;
-    left: 26%;
+    top: 0.8rem;
+    left: 50%;
     transform: translateX(-50%);
+    padding: 0.4rem 0.6rem;
   }
-  
-  .promo-text { font-size: 1rem; }
-  .promo-subtext { font-size: 0.7rem; }
-  .promo-date { font-size: 0.5rem;  }
-  .promo-click-here {font-size: 0.4rem; }
 
+  .promo-text { font-size: 0.9rem; }
+  .promo-subtext { font-size: 0.7rem; }
+  .promo-date { font-size: 0.6rem; }
+  .promo-click-here { font-size: 0.5rem; }
 }

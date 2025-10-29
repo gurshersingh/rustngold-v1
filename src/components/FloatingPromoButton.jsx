@@ -5,7 +5,7 @@ import styles from './PromoFloating.module.css';
 export default function FloatingPromoButton() {
   const handleClick = (e) => {
     e.preventDefault();
-    window.dispatchEvent(new CustomEvent('openPromo'));
+    window.dispatchEvent(new CustomEvent('togglePromo'));
   };
 
   return (
