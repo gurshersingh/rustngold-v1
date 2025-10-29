@@ -34,6 +34,24 @@ export const MENU = [
     ]
   },
   {
+    id: 'breakfast',
+    title: 'Breakfast',
+    description: 'Served Saturday & Sunday until 2pm.',
+    items: [
+      { name: 'Toast with Spreads', price: '6.50', desc: 'Two slices of toasted sourdough with butter and your choice of Vegemite, jam, peanut butter, or honey.' },
+      { name: 'Bacon, Egg & Hash Brown Roll', price: '10.90', desc: 'Crispy bacon, fried egg, golden hash brown, and our Signature House Sauce on a toasted milk bun.' },
+      { name: 'Two Eggs on Toast', price: '10.90', desc: 'Eggs cooked your way—fried, scrambled, or poached—served on toasted sourdough.' },
+      { name: 'Classic Porridge', price: '12.90', desc: 'Creamy rolled oats topped with seasonal berries, a drizzle of honey, a spoon of nut butter, and a sprinkle of cinnamon.' },
+      { name: 'Croissant French Toast', price: '11.90', desc: 'Fluffy, buttery croissants soaked in vanilla-cinnamon custard, griddled to golden perfection, and served with berries, maple syrup, and icing sugar.' },
+      { name: 'Meat Lovers Omelette', price: '16.90', desc: 'Fluffy three-egg omelette loaded with crispy bacon, shaved leg ham, spicy salami, and melted cheese, served with toasted sourdough.' },
+      { name: 'Veggie Omelette', price: '15.90', desc: 'Light and flavourful three-egg omelette filled with baby spinach, cherry tomatoes, and sautéed mushrooms, served with toasted sourdough.' },
+      { name: 'The Big Aussie', price: '21.50', desc: 'Two eggs your way, crispy bacon, juicy chipolata sausages, grilled tomato, sautéed mushrooms, golden hash browns, and toasted sourdough.' },
+      { name: 'The Veggie Brekkie', price: '19.90', desc: 'Two eggs your way, grilled halloumi, smashed avocado, grilled tomato, sautéed mushrooms, wilted spinach, baked beans, golden hash browns, and toasted sourdough.' },
+      { name: 'Chilli Scramble', price: '15.90', desc: 'Creamy scrambled eggs infused with house-made chilli oil, topped with crumbled feta and crispy fried shallots, served on toasted sourdough.' },
+      { name: 'Classic Eggs Benny', price: '16.90', desc: 'Two poached eggs with wilted spinach on a toasted English muffin, topped with rich hollandaise sauce and your choice of leg ham or bacon.' },
+    ]
+  },
+  {
     id: 'mains',
     title: 'Mains',
     items: [
@@ -86,6 +104,18 @@ export const MENU = [
       { name: 'Chicken Nuggets & Chips', price: '10.00', desc: null },
       { name: 'Fish Bites & Chips', price: '12.00', desc: null },
       { name: 'Kids Spaghetti Bolognese', price: '12.00', desc: null }
+    ]
+  },
+  {
+    id: 'todays_special',
+    title: "Today's Specials",
+    description: 'Available for a limited time only. Perfect for a quick, hearty lunch!',
+    items: [
+      {
+        name: 'Butter Chicken with Saffron Rice & Drink',
+        price: '15.99',
+        desc: 'Rich, creamy butter chicken simmered in a spiced tomato sauce, served with aromatic saffron rice and your choice of canned soft drink. A comforting classic with a touch of elegance.'
+      }
     ]
   },
   {
