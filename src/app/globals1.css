@@ -752,6 +752,14 @@ for your header on mobile devices.
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 720px) {
   .fixed-button {

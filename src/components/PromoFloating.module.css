@@ -1,0 +1,45 @@
+.fixedPromoButton {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, #c21807, #d63333);
+  color: white;
+  padding: 0.9rem 1.4rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 9999;
+  animation: popIn 0.6s ease;
+}
+
+.fixedPromoButton:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+.promoText {
+  display: block;
+  line-height: 1.1;
+}
+
+.promoSubtext {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .fixedPromoButton {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
