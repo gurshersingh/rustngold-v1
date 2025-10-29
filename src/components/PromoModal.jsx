@@ -44,6 +44,14 @@ export default function PromoModal() {
 
         <h3>🍳 Breakfast Now Served Weekends!</h3>
         <p>From fresh Eggs Benny to our Big Aussie Breakfast — start your day the Rust n Gold way.</p>
+        <hr style={{ margin: '2rem 0', opacity: 0.3 }} />
+
+        <h3>🚗 Better Than Uber Eats, DoorDash & Menulog!</h3>
+        <p>
+        Enjoy <strong>exclusive lower prices</strong> when ordering directly through our website — 
+        plus <strong>FREE delivery</strong> on orders over $35.<br/>
+        <em>Support local, save more, and get your favourites faster!</em>
+        </p>
       </div>
     </div>
   );
