@@ -52,7 +52,7 @@ export default function PromoModal() {
         <h3>🚗 Better Than Uber Eats, DoorDash & Menulog!</h3>
         <p>
         Enjoy <strong>exclusive lower prices</strong> when ordering directly through our website — 
-        plus <strong>FREE delivery</strong> on orders over $35.<br/>
+        plus <strong>FREE delivery</strong> on orders over $35 within 5kms.<br/>
         <em>Support local, save more, and get your favourites faster!</em>
         </p>
       </div>
