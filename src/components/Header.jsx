@@ -1,52 +1,60 @@
 'use client';
-// src/components/Header.jsx
-import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/data';
-import { FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+
 export default function Header() {
-  
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  const scrollToMenu = (e) => {
+    e.preventDefault();
+    document.querySelector('#menu')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <header className="hero-modern">
+    <header id="hero" className="hero">
       <Image
         src="/images/background.jpg"
-        alt="A modern and elegant cafe interior at Rust n Gold"
-        className="hero-background-image"
+        alt="Rust n Gold cafe interior — warm, golden-lit dining room in Ballarat"
+        className="hero__bg"
         fill
         priority
+        sizes="100vw"
+        quality={85}
       />
-      <div className="hero-overlay"></div>
-      
-      <div className="hero-content-modern">
-       <h1 className="main-heading">
-          <span className="logo-text">
-            <span>Rust</span><br className="mobile-only-break" />
-            <span className="brittany-n">n</span><br className="mobile-only-break" />
-            <span>Gold</span>
-          </span>
+      <div className="hero__overlay" />
+
+      <div className={`hero__content ${loaded ? 'hero__content--visible' : ''}`}>
+        <p className="hero__kicker">Welcome to</p>
+        <h1 className="hero__title">
+          <span className="hero__title-rust">Rust</span>
+          <span className="hero__title-n">n</span>
+          <span className="hero__title-gold">Gold</span>
         </h1>
-        <h2 className="sub-heading">
-          <span className="brittany-n-tagline">Brewed Mornings.</span>
-          <br className="mobile-only-break"/>
-          <span  className="brittany-n-tagline">Golden Evenings.</span>
-        </h2>
-        <Link href="#menu" className="cta-button">
-          Explore Our Menu
-        </Link>
-      </div>
-       <div className="contact-details-bar">
-          <a
-            href="tel:+61478177222"
-            className="phone-contact"
-            onClick={() => gtag('event', 'conversion', { 'send_to': 'AW-17459624697/dAPfCKWdhZ0bEPn1soVB' })}
-  >
-            <FaPhone /> 0478 177 222
+        <p className="hero__tagline">{SITE.tagline}</p>
+        <div className="hero__actions">
+          <a href="#menu" className="btn btn--primary" onClick={scrollToMenu}>
+            Explore Our Menu
           </a>
-          
-          <p className="address-contact">
-            <FaMapMarkerAlt /> {SITE.address}
-          </p>
+          <a
+            href="https://rust-n-gold.nextorder.com"
+            className="btn btn--outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Order Online
+          </a>
         </div>
+      </div>
+
+      <div className="hero__scroll-indicator">
+        <span>Scroll</span>
+        <div className="hero__scroll-line" />
+      </div>
     </header>
   );
 }

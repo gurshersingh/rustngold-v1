@@ -1,6 +1,4 @@
 'use client';
-import Link from 'next/link';
-import styles from './PromoFloating.module.css';
 
 export default function FloatingPromoButton() {
   const handleClick = (e) => {
@@ -9,9 +7,9 @@ export default function FloatingPromoButton() {
   };
 
   return (
-    <Link href="#" className={styles.fixedPromoButton} onClick={handleClick}>
-      <span className={styles.promoText}>🎄 Offers</span>
-      <span className={styles.promoSubtext}>Tap to view</span>
-    </Link>
+    <a href="#" className="floating-promo" onClick={handleClick}>
+      <span className="floating-promo__text">Offers</span>
+      <span className="floating-promo__sub">Tap to view</span>
+    </a>
   );
 }

@@ -1,48 +1,31 @@
-"use client";
-
-import Slider from 'react-slick';
-import { GALLERY } from '@/data';
+'use client';
 import Image from 'next/image';
+import { GALLERY } from '@/data';
+import useScrollReveal from '@/hooks/useScrollReveal';
+
 export default function Gallery() {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    cssEase: 'ease-in-out',
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  }
+  const ref = useScrollReveal();
+
   return (
-    <section className="gallery">
-      <h2>Gallery</h2>
-      <Slider {...settings}>
-        {GALLERY.map((src, i) => (
-          <div key={i} className="gallery-item">
-            <Image 
-              src={src} 
-              alt={`Delicious Food from our Ballarat Restaurant - ${i+1}`}
-              width={300} // <-- Add a width
-              height={200} // <-- Add a height  
-               />
-          </div>
-        ))}
-      </Slider>
+    <section id="gallery" className="gallery reveal-section" ref={ref}>
+      <div className="gallery__inner">
+        <span className="section-label">Gallery</span>
+        <h2 className="section-heading">A taste of what awaits.</h2>
+        <div className="gallery__grid">
+          {GALLERY.map((src, i) => (
+            <div key={i} className={`gallery__item ${i === 0 || i === 5 ? 'gallery__item--large' : ''}`}>
+              <Image
+                src={src}
+                alt={`Rust n Gold dish ${i + 1} — freshly prepared at our Ballarat restaurant`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="gallery__img"
+              />
+              <div className="gallery__item-overlay" />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
-  )
+  );
 }

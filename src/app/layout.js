@@ -1,26 +1,18 @@
-// my-restaurant-app/src/app/layout.jsx
 import { SITE } from '@/data';
 import '@/app/globals1.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Script from 'next/script'; // Import the Script component
+import Script from 'next/script';
 import { Pacifico } from 'next/font/google';
-import Link from 'next/link';
-import { TrackedCallLink } from '../components/TrackedCallLink';
 
 export const metadata = {
-  // ... (metadata remains the same)
-  // Primary SEO
   title: `${SITE.name} Cafe Ballarat – Best Coffee & Restaurant Experience`,
-  description: 'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. We are a family-friendly restaurant located at 202 Albert St, Sebastopol, Ballarat, VIC 3356. Perfect for brewed mornings and golden evenings.',
+  description:
+    'Rust n Gold Cafe in Ballarat offers artisan coffee, fresh breakfast, lunch & dinner, and a cozy atmosphere. We are a family-friendly restaurant located at 202 Albert St, Sebastopol, Ballarat, VIC 3356. Perfect for brewed mornings and golden evenings.',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://www.rustngold.com',
   },
-
-  // Open Graph
   openGraph: {
     title: `${SITE.name} - Cafe & Restaurant in Ballarat`,
     description: 'Artisan coffee, fresh meals, and a cozy atmosphere in Ballarat.',
@@ -33,8 +25,6 @@ export const metadata = {
       alt: `${SITE.name} Cafe and Restaurant in Ballarat`,
     },
   },
-
-  // Twitter Card
   twitter: {
     card: 'summary_large_image',
     title: `${SITE.name} - Cafe & Restaurant in Ballarat`,
@@ -42,18 +32,17 @@ export const metadata = {
     images: 'https://rustngold.com/og-image.png',
   },
   icons: {
-    icon: '/favicon.png', // This will use your PNG file as the favicon
-    apple: '/apple-touch-icon.png', // This will use your Apple Touch Icon
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
 };
 
 const pacifico = Pacifico({
   subsets: ['latin'],
-  weight: ['400'], // Use the weight that you need
-  variable: '--font-bebas-neue',
+  weight: ['400'],
+  variable: '--font-pacifico',
 });
 
-// Schema.org Structured Data - as a separate function or component
 function jsonLd() {
   return {
     __html: `{
@@ -82,89 +71,48 @@ function jsonLd() {
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "07:00",
+          "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
           "closes": "21:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday", "Sunday"],
-          "opens": "08:00",
-          "closes": "22:00"
         }
       ]
-    }`
+    }`,
   };
 }
 
-// Extract the conversion ID and phone number for clarity
 const CONVERSION_ID = 'AW-17459624697';
 
 export default function RootLayout({ children }) {
-  // Function to handle the call link click and report conversion
-  
   return (
-        <html lang="en" className={pacifico.variable}>
-            <head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
-            </head>
-            <body suppressHydrationWarning={true}>
-                {children}
-                <SpeedInsights />
-                <Analytics />
+    <html lang="en" className={pacifico.variable}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+        />
+      </head>
+      <body suppressHydrationWarning={true}>
+        {children}
+        <SpeedInsights />
+        <Analytics />
 
-                {/* --- Google Ads Global Tag (Keep this!) --- */}
-                <Script
-                    async
-                    src={`https://www.googletagmanager.com/gtag/js?id=${CONVERSION_ID}`}
-                    strategy="afterInteractive"
-                />
-                <Script id="google-analytics" strategy="afterInteractive">
-                    {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', '${CONVERSION_ID}');
-                    `}
-                </Script>
-                {/* --- End Google Tag Integration --- */}
+        {/* Google Ads Global Tag */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${CONVERSION_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${CONVERSION_ID}');
+          `}
+        </Script>
 
-                <footer className="site-footer">
-                    {/* ... footer content ... */}
-                </footer>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={jsonLd()}
-                />
-
-                {/* --- Fixed Call & Order Buttons --- */}
-                {/* USE THE NEW TRACKED COMPONENT HERE */}
-                <TrackedCallLink 
-                    href="tel:+61478177222" 
-                    className="fixed-call-button"
-                >
-                    Call Now
-                </TrackedCallLink>
-
-                {/* The other buttons remain the same (for now) */}
-                <Link 
-                    href="https://rust-n-gold.nextorder.com"
-                    className="fixed-button fixed-promo-button">
-                    <span className="promo-click-here">Click here</span>
-                    <p className="promo-text">FREE DELIVERY!</p>
-                    <span className="promo-date">min order $35</span>
-                </Link>
-
-                <Link
-                    href="https://rust-n-gold.nextorder.com"
-                    className="fixed-cta-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Order Online
-                </Link>
-                {/* --- End Fixed Call & Order Buttons --- */}
-            </body>
-        </html>
-    );
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd()} />
+      </body>
+    </html>
+  );
 }
