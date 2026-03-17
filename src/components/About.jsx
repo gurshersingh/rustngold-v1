@@ -32,7 +32,7 @@ export default function About() {
             Brewed with passion,<br />served with love.
           </h2>
           <p className="about__description">
-            Nestled in the heart of Ballarat, Rust n Gold is more than a cafe —
+            Nestled in the heart of Sebastopol, Ballarat, Rust n Gold is more than a cafe —
             it&apos;s a gathering place where rich coffee meets hearty meals. From
             golden mornings with artisan brews to cozy evenings with chef-crafted
             mains, every visit is an experience worth savouring.
