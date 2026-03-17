@@ -34,9 +34,6 @@ export default function PromoModal() {
           <br /><br />
           You can also now <strong>build your own Rice Bowl</strong> by choosing your preferred base,
           meat, and dips to create your perfect meal.
-          <br /><br />
-          And by popular demand, we’re now serving <strong>Churros with chocolate dip</strong> —
-          the perfect sweet finish to your order.
         </p>
 
         <Link
