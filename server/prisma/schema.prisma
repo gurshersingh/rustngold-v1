@@ -1,0 +1,259 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USERS & AUTH
+// ============================================
+
+enum UserRole {
+  admin
+  manager
+  kitchen
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique @db.VarChar(255)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  name         String   @db.VarChar(100)
+  role         UserRole
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("users")
+}
+
+// ============================================
+// MENU STRUCTURE
+// ============================================
+
+model MenuCategory {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @db.VarChar(100)
+  slug        String   @unique @db.VarChar(100)
+  description String?  @db.Text
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  items MenuITem[]
+
+  @@map("menu_categories")
+}
+
+model MenuITem {
+  id          String   @id @default(uuid()) @db.Uuid
+  categoryId  String   @map("category_id") @db.Uuid
+  name        String   @db.VarChar(200)
+  slug        String   @db.VarChar(200)
+  description String?  @db.Text
+  priceCents  Int      @map("price_cents")
+  imageUrl    String?  @map("image_url") @db.VarChar(500)
+  isActive    Boolean  @default(true) @map("is_active")
+  isAvailable Boolean  @default(true) @map("is_available")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  category       MenuCategory            @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  customisations MenuItemCustomisation[]
+  orderItems     OrderItem[]
+
+  @@unique([categoryId, slug])
+  @@index([categoryId])
+  @@index([isActive, isAvailable])
+  @@map("menu_items")
+}
+
+// ============================================
+// CUSTOMISATIONS (Modifier Groups + Options)
+// ============================================
+
+model Customisation {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @db.VarChar(100)
+  description String?  @db.Text
+  minSelect   Int      @default(0) @map("min_select")
+  maxSelect   Int      @default(1) @map("max_select")
+  isRequired  Boolean  @default(false) @map("is_required")
+  isActive    Boolean  @default(true) @map("is_active")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  options   CustomisationOption[]
+  menuItems MenuItemCustomisation[]
+
+  @@map("customisations")
+}
+
+model CustomisationOption {
+  id               String   @id @default(uuid()) @db.Uuid
+  customisationId  String   @map("customisation_id") @db.Uuid
+  name             String   @db.VarChar(100)
+  priceCents       Int      @default(0) @map("price_cents")
+  isActive         Boolean  @default(true) @map("is_active")
+  sortOrder        Int      @default(0) @map("sort_order")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  customisation Customisation @relation(fields: [customisationId], references: [id], onDelete: Cascade)
+
+  @@index([customisationId])
+  @@map("customisation_options")
+}
+
+// Many-to-many: customisations linked to menu items
+model MenuItemCustomisation {
+  id               String @id @default(uuid()) @db.Uuid
+  menuItemId       String @map("menu_item_id") @db.Uuid
+  customisationId  String @map("customisation_id") @db.Uuid
+  sortOrder        Int    @default(0) @map("sort_order")
+
+  menuItem      MenuITem      @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+  customisation Customisation @relation(fields: [customisationId], references: [id], onDelete: Cascade)
+
+  @@unique([menuItemId, customisationId])
+  @@index([menuItemId])
+  @@map("menu_item_customisations")
+}
+
+// ============================================
+// ORDERS
+// ============================================
+
+enum OrderType {
+  pickup
+  delivery
+}
+
+enum OrderStatus {
+  pending_payment
+  paid
+  preparing
+  ready
+  completed
+  cancelled
+  refunded
+}
+
+model Order {
+  id                   String      @id @default(uuid()) @db.Uuid
+  orderNumber          Int         @default(autoincrement()) @map("order_number")
+  customerName         String      @map("customer_name") @db.VarChar(100)
+  customerPhone        String      @map("customer_phone") @db.VarChar(20)
+  customerEmail        String?     @map("customer_email") @db.VarChar(255)
+  orderType            OrderType   @map("order_type")
+  deliveryAddress      String?     @map("delivery_address") @db.Text
+  subtotalCents        Int         @map("subtotal_cents")
+  totalCents           Int         @map("total_cents")
+  notes                String?     @db.Text
+  status               OrderStatus @default(pending_payment)
+  stripeSessionId      String?     @map("stripe_session_id") @db.VarChar(255)
+  stripePaymentIntent  String?     @map("stripe_payment_intent") @db.VarChar(255)
+  paidAt               DateTime?   @map("paid_at") @db.Timestamptz
+  estimatedReady       DateTime?   @map("estimated_ready") @db.Timestamptz
+  createdAt            DateTime    @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt            DateTime    @updatedAt @map("updated_at") @db.Timestamptz
+
+  items    OrderItem[]
+  payments Payment[]
+
+  @@index([status])
+  @@index([createdAt(sort: Desc)])
+  @@map("orders")
+}
+
+model OrderItem {
+  id             String @id @default(uuid()) @db.Uuid
+  orderId        String @map("order_id") @db.Uuid
+  menuItemId     String @map("menu_item_id") @db.Uuid
+  itemName       String @map("item_name") @db.VarChar(200)
+  itemPriceCents Int    @map("item_price_cents")
+  quantity       Int    @default(1)
+  subtotalCents  Int    @map("subtotal_cents")
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuItem       MenuITem @relation(fields: [menuItemId], references: [id])
+  customisations OrderItemCustomisation[]
+
+  @@index([orderId])
+  @@map("order_items")
+}
+
+model OrderItemCustomisation {
+  id                 String @id @default(uuid()) @db.Uuid
+  orderItemId        String @map("order_item_id") @db.Uuid
+  customisationName  String @map("customisation_name") @db.VarChar(100)
+  optionName         String @map("option_name") @db.VarChar(100)
+  optionPriceCents   Int    @default(0) @map("option_price_cents")
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  orderItem OrderItem @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+
+  @@map("order_item_customisations")
+}
+
+// ============================================
+// PAYMENTS
+// ============================================
+
+enum PaymentStatus {
+  pending
+  succeeded
+  failed
+  refunded
+}
+
+model Payment {
+  id                   String        @id @default(uuid()) @db.Uuid
+  orderId              String        @map("order_id") @db.Uuid
+  stripePaymentIntent  String        @map("stripe_payment_intent") @db.VarChar(255)
+  stripeSessionId      String?       @map("stripe_session_id") @db.VarChar(255)
+  amountCents          Int           @map("amount_cents")
+  currency             String        @default("aud") @db.VarChar(3)
+  status               PaymentStatus
+  stripeReceiptUrl     String?       @map("stripe_receipt_url") @db.VarChar(500)
+  createdAt            DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt            DateTime      @updatedAt @map("updated_at") @db.Timestamptz
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  @@map("payments")
+}
+
+// ============================================
+// PROMOTIONS
+// ============================================
+
+enum DiscountType {
+  percentage
+  fixed_amount
+  banner_only
+}
+
+model Promotion {
+  id            String        @id @default(uuid()) @db.Uuid
+  title         String        @db.VarChar(200)
+  description   String?       @db.Text
+  discountType  DiscountType? @map("discount_type")
+  discountValue Int?          @map("discount_value")
+  promoCode     String?       @unique @map("promo_code") @db.VarChar(50)
+  imageUrl      String?       @map("image_url") @db.VarChar(500)
+  isActive      Boolean       @default(true) @map("is_active")
+  startDate     DateTime?     @map("start_date") @db.Timestamptz
+  endDate       DateTime?     @map("end_date") @db.Timestamptz
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime      @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("promotions")
+}

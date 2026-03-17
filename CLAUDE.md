@@ -4,36 +4,95 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Rust n Gold is a restaurant/cafe website for a venue in Ballarat, Victoria, Australia. It's a single-page Next.js application — purely presentational with no backend API. Content (menu items, gallery images, site info) is managed via a central data file.
+Rust n Gold is a restaurant/cafe website and ordering platform for a venue in Ballarat, Victoria, Australia. The project is a monorepo with two main parts:
+
+- **`client/`** — Next.js 15 frontend (public website, ordering UI, admin panel, kitchen dashboard)
+- **`server/`** — Node.js/Express backend (REST API, auth, Stripe payments, Prisma ORM)
+
+## Monorepo Structure
+
+```
+rustngold-v2/
+├── client/          # Next.js 15 frontend (deployed to Vercel)
+│   ├── src/
+│   │   ├── app/     # App Router pages
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── data.js  # Static content for landing page
+│   └── public/
+├── server/          # Express backend (deployed to Railway/Render)
+│   ├── src/
+│   │   ├── config/       # DB, Stripe, Cloudinary, env validation
+│   │   ├── middleware/   # auth, rbac, validate, rateLimiter, errorHandler
+│   │   ├── routes/       # API route definitions
+│   │   ├── controllers/  # Request handlers
+│   │   ├── services/     # Business logic
+│   │   ├── validators/   # Zod schemas
+│   │   ├── utils/        # Logger, AppError, priceCalc
+│   │   └── index.js      # Express app entry point
+│   └── prisma/
+│       ├── schema.prisma # Database schema
+│       └── seed.js       # Menu data seeder
+├── package.json     # Root monorepo scripts
+└── CLAUDE.md
+```
 
 ## Commands
 
 ```bash
-npm run dev      # Start dev server with Turbopack (http://localhost:3000)
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # ESLint
+# Root (monorepo)
+npm run dev              # Start both client and server concurrently
+npm run install:all      # Install deps for root, client, and server
+
+# Client (Next.js)
+cd client
+npm run dev              # Start dev server with Turbopack (http://localhost:3000)
+npm run build            # Production build
+npm run lint             # ESLint
+
+# Server (Express)
+cd server
+npm run dev              # Start with nodemon (http://localhost:4000)
+npm run start            # Production start
+npm run db:generate      # Generate Prisma client
+npm run db:migrate       # Run database migrations
+npm run db:seed          # Seed menu data + default users
+npm run db:studio        # Open Prisma Studio
 ```
 
 No test framework is configured.
 
 ## Architecture
 
-**Stack:** Next.js 15 (App Router), React 19, CSS Modules + global CSS
+### Client (Next.js 15, React 19)
 
-**Page composition** (`src/app/page.js`):
+**Landing page composition** (`client/src/app/page.js`):
 ```
-Header → PromoModal → FloatingPromoButton → MenuSection → Gallery → Enquiry
+Navbar → Header → PromoModal → FloatingPromoButton → About → MenuSection → Gallery → Hours → Enquiry → Footer
 ```
 
-**Key architectural decisions:**
+- **`client/src/data.js`** — static content for landing page (SITE info, MENU display, GALLERY images)
+- **`client/src/app/layout.js`** — SEO metadata, Schema.org, Google Ads tracking, Vercel Analytics
+- **Import alias:** `@/*` maps to `./src/*` (configured in `jsconfig.json`)
 
-- **`src/data.js`** is the single source of truth for all content — `SITE` (name, address, phone), `MENU` (categories with items), and `GALLERY` (image paths). All components import from here. To update menu items, prices, or restaurant info, edit only this file.
-- **`src/app/layout.js`** handles SEO metadata, Schema.org structured data, Google Ads conversion tracking (AW-17459624697), fixed CTA buttons (Call Now, Order Online, Free Delivery), Vercel Analytics, and custom font loading.
-- Components use `'use client'` directives where interactivity is needed (modals, carousel). Otherwise they render as server components.
-- **`src/app/globals1.css`** is the primary global stylesheet (~15KB). Component-specific styles use CSS Modules (`.module.css` files).
+### Server (Node.js, Express 4, Prisma)
 
-**Import alias:** `@/*` maps to `./src/*` (configured in `jsconfig.json`).
+- **Database:** PostgreSQL (Neon free tier) with Prisma ORM
+- **Auth:** bcrypt + JWT stored in httpOnly cookies, role-based access (admin, manager, kitchen)
+- **Payments:** Stripe Checkout (hosted) with webhook signature verification
+- **Image uploads:** Cloudinary via multer
+- **Security:** Helmet, CORS, rate limiting, Zod validation, server-side price calculation
+- **Prices stored in cents** — `$15.99` = `1599` to avoid float issues
+
+### API Routes
+
+```
+Public:    GET /api/menu, POST /api/orders/checkout, GET /api/orders/:id/status
+Auth:      POST /api/auth/login, POST /api/auth/logout, GET /api/auth/me
+Admin:     /api/admin/menu/*, /api/admin/customisations/*, /api/admin/orders/*, /api/admin/staff/*
+Kitchen:   GET /api/kitchen/orders, PATCH /api/kitchen/orders/:id/status
+Webhook:   POST /api/webhooks/stripe
+```
 
 ## Design Tokens
 
@@ -44,6 +103,7 @@ Header → PromoModal → FloatingPromoButton → MenuSection → Gallery → En
 
 ## External Integrations
 
-- **NextOrder** (online ordering): https://rust-n-gold.nextorder.com — linked from CTAs
+- **Stripe** — payment processing (hosted checkout + webhooks)
+- **Cloudinary** — menu item image uploads
 - **Google Ads** conversion tracking for phone call clicks (`TrackedCallLink` component)
 - **Vercel** Analytics and Speed Insights
